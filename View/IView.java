@@ -4,10 +4,25 @@
  */
 package View;
 
+import java.util.List;
+
 /**
  *
  * @author 9567
  */
-public interface IView {
+public interface IView<T>{
+        public void insert();
+    
+    public void update();
+    
+    public void delete();
+    
+    public void read();
+    
+    public void readAll();
+    
+    public void showMessage(String str);
+    
+    public void showErrorMessage(String str);
     
 }
