@@ -41,6 +41,8 @@ public class TragaMoneda extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         LblName = new javax.swing.JLabel();
         BJugar = new javax.swing.JButton();
+        BnResetear = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BDetener1 = new javax.swing.JButton();
         BDetener = new javax.swing.JButton();
@@ -61,27 +63,49 @@ public class TragaMoneda extends javax.swing.JFrame {
             }
         });
 
+        BnResetear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BnResetear.setText("Resetear");
+        BnResetear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BnResetearActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel2.setText("Restablecer");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(BJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LblName)
-                .addGap(50, 50, 50))
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(LblName)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(BnResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(44, 44, 44))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(29, 29, 29)
                 .addComponent(LblName)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BnResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
@@ -135,7 +159,6 @@ public class TragaMoneda extends javax.swing.JFrame {
                         .addGap(69, 69, 69)
                         .addComponent(BDetener2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,8 +198,9 @@ public class TragaMoneda extends javax.swing.JFrame {
         Bn3 = new JugadorController();
         respuesta1 = false;
         respuesta2 = false;
-        respuesta3 = false;
+        respuesta3 = false; 
         BJugar.setEnabled(false);
+        BnResetear.setEnabled(false);
         Bn1.start();
         Bn2.start();
         Bn3.start();
@@ -199,6 +223,10 @@ public class TragaMoneda extends javax.swing.JFrame {
         respuesta3 = true;
         comprobarResultado();
     }//GEN-LAST:event_BDetener2ActionPerformed
+
+    private void BnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BnResetearActionPerformed
+        reiniciar();
+    }//GEN-LAST:event_BnResetearActionPerformed
     
     private TragaMoneda() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -248,8 +276,10 @@ public class TragaMoneda extends javax.swing.JFrame {
     private javax.swing.JButton BDetener1;
     private javax.swing.JButton BDetener2;
     private javax.swing.JButton BJugar;
+    private javax.swing.JButton BnResetear;
     private javax.swing.JLabel LblName;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
@@ -282,12 +312,38 @@ public class TragaMoneda extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
-            BJugar.setEnabled(true);
+            
+            BnResetear.setEnabled(true);
             if (B1.getIcon().toString().equals(B2.getIcon().toString()) && B1.getIcon().toString().equals(B3.getIcon().toString())) {
                 JOptionPane.showMessageDialog(null, "Felicitaciones, has ganado!");
             } else {
                 JOptionPane.showMessageDialog(null, "Vuelve a intentarlo");
             }
         }
+    }
+    private void reiniciar(){
+        BJugar.setEnabled(true);
+        B1.setIcon(null);
+        B2.setIcon(null);
+        B3.setIcon(null);
+        respuesta1 = false;
+        respuesta2 = false;
+        respuesta3 = false;
+        B1.repaint();
+        B2.repaint();
+        B3.repaint();
+    if (Bn1 != null) {
+            Bn1.detener();
+        }
+        if (Bn2 != null) {
+            Bn2.detener();
+        }
+        if (Bn3 != null) {
+            Bn3.detener();
+        }
+        Bn1 = null;
+        Bn2 = null;
+        Bn3 = null;
+
     }
 }

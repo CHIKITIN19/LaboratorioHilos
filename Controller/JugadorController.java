@@ -18,20 +18,12 @@ import javax.swing.ImageIcon;
  */
 public class JugadorController extends Thread {
 
-//    private JugadorList list;  
-//    private IView<JugadorList> view;  
-//    private Jugador jugadorActual;
-    private TragaMoneda tragamoneda;  
+    TragaMoneda tragamoneda;  
     private boolean ejecucion = true;
-    private int tiempo = 100; 
+    
+
 
     
-//    public JugadorController(JugadorList list, IView<JugadorList> view, TragaMoneda tragamoneda) {
-//        this.list = list;
-//        this.view = view;
-//        this.tragamoneda = tragamoneda;
-//    }
-
    
 //    public void insertJugador(String nombre) {
 //        Jugador jugador = new Jugador(nombre);
@@ -47,7 +39,6 @@ public class JugadorController extends Thread {
     
         public void detener() {
             ejecucion = false;
-            Thread.currentThread().interrupt();
         }
 
     
@@ -69,9 +60,9 @@ public class JugadorController extends Thread {
             View.TragaMoneda.B2.setIcon(imagenIcon2);
             View.TragaMoneda.B3.setIcon(imagenIcon3);
             try {
-                Thread.sleep(100);
+                Thread.sleep(150);
             } catch (InterruptedException ex) {
-                System.out.println("Error en el hilo: " + ex.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
     }
