@@ -4,33 +4,25 @@
  */
 package View;
 
-import Model.Jugador;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import Controller.JugadorController;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 
 /**
  *
  * @author 9567
  */
 public class TragaMoneda extends javax.swing.JFrame {
-    
+    JugadorController Bn1, Bn2, Bn3;
+    boolean respuesta1 = false;
+    boolean respuesta2 = false;
+    boolean respuesta3 = false;
     /**
      * Creates new form TragaMoneda
+     * @param nombre
      */
-    public TragaMoneda() {
+    public TragaMoneda(String nombre) {
         initComponents();
-        initBotones();
-    }
-    
-    private JButton[] botones = new JButton[3];
-
-    private void initBotones(){
-        botones[0] = B1;
-        botones[1] = B2;
-        botones[1] = B3;
+        LblName.setText(nombre);
     }
     
     /**
@@ -49,8 +41,10 @@ public class TragaMoneda extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         LblName = new javax.swing.JLabel();
         BJugar = new javax.swing.JButton();
-        BDetener = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        BDetener1 = new javax.swing.JButton();
+        BDetener = new javax.swing.JButton();
+        BDetener2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,27 +61,18 @@ public class TragaMoneda extends javax.swing.JFrame {
             }
         });
 
-        BDetener.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        BDetener.setText("Detener");
-        BDetener.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BDetenerActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BDetener, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                    .addComponent(BJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(LblName)))
+                .addComponent(BJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LblName)
+                .addGap(50, 50, 50))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,13 +81,35 @@ public class TragaMoneda extends javax.swing.JFrame {
                 .addComponent(LblName)
                 .addGap(18, 18, 18)
                 .addComponent(BJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BDetener, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel1.setText("Bienvenido al Juego de TragaMonedas");
+
+        BDetener1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BDetener1.setText("Detener");
+        BDetener1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BDetener1ActionPerformed(evt);
+            }
+        });
+
+        BDetener.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BDetener.setText("Detener");
+        BDetener.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BDetenerActionPerformed(evt);
+            }
+        });
+
+        BDetener2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BDetener2.setText("Detener");
+        BDetener2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BDetener2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,12 +126,20 @@ public class TragaMoneda extends javax.swing.JFrame {
                         .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(BDetener, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                        .addGap(94, 94, 94)
+                        .addComponent(BDetener1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(BDetener2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,6 +148,7 @@ public class TragaMoneda extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)
@@ -140,9 +156,13 @@ public class TragaMoneda extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 6, Short.MAX_VALUE)))
+                                    .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(BDetener1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BDetener, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BDetener2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -150,13 +170,40 @@ public class TragaMoneda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BJugarActionPerformed
-        this.display(WIDTH, WIDTH, WIDTH);
+        Bn1 = new JugadorController();
+        Bn2 = new JugadorController();
+        Bn3 = new JugadorController();
+        respuesta1 = false;
+        respuesta2 = false;
+        respuesta3 = false;
+        BJugar.setEnabled(false);
+        Bn1.start();
+        Bn2.start();
+        Bn3.start();
     }//GEN-LAST:event_BJugarActionPerformed
 
     private void BDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDetenerActionPerformed
-        this.detener();
+        Bn1.detener();
+        respuesta1 = true;
+        comprobarResultado();
     }//GEN-LAST:event_BDetenerActionPerformed
 
+    private void BDetener1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDetener1ActionPerformed
+        Bn2.detener();
+        respuesta2 = true;
+        comprobarResultado();
+    }//GEN-LAST:event_BDetener1ActionPerformed
+
+    private void BDetener2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDetener2ActionPerformed
+        Bn3.detener();
+        respuesta3 = true;
+        comprobarResultado();
+    }//GEN-LAST:event_BDetener2ActionPerformed
+    
+    private TragaMoneda() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -194,10 +241,12 @@ public class TragaMoneda extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B1;
-    private javax.swing.JButton B2;
-    private javax.swing.JButton B3;
+    public static javax.swing.JButton B1;
+    public static javax.swing.JButton B2;
+    public static javax.swing.JButton B3;
     private javax.swing.JButton BDetener;
+    private javax.swing.JButton BDetener1;
+    private javax.swing.JButton BDetener2;
     private javax.swing.JButton BJugar;
     private javax.swing.JLabel LblName;
     private javax.swing.JLabel jLabel1;
@@ -205,29 +254,40 @@ public class TragaMoneda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
-    public void display(int i, int i0, int i1) {
-        timer = new Timer(100, (ActionEvent e) -> {
-            for (int j = 0; j < botones.length; j++) {
-                botones[j].setIcon(new ImageIcon(imagenes[indices[j]]));
-                if (botones[j] != null) {
-                    botones[j].setIcon(new ImageIcon(imagenes[indices[j]]));
-                } else {
-                    System.out.println("Error: botones[" + j + "] es nulo");
-                }
-                indices[j] = (indices[j] + 1) % imagenes.length;
+//    public void display() {
+//     while (true) {
+//         int numero = (int) (Math.random() * (4) + 1);
+//         String ruta = "src\\IMG\\" + numero + ".png";
+//         ImageIcon icon = new ImageIcon(ruta);
+//         B1.setIcon(icon);
+//         try {
+//             Thread.sleep(100);
+//         } catch (InterruptedException ex){
+//             Thread.currentThread().interrupt();
+//         }
+//     }   
+//    }
+//
+//    public void displayMessage(String el_tragamoneda_ha_parado) {
+//        JOptionPane.showMessageDialog(this, "¡El tragamoneda ha parado!");
+//    }
+//    
+//    public void detener() {
+//        
+//    }
+    private void comprobarResultado() {
+        if (respuesta1 && respuesta2 && respuesta3) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
             }
-        });
-        timer.start();
-    }
-
-    public void displayMessage(String el_tragamoneda_ha_parado) {
-        JOptionPane.showMessageDialog(this, "¡El tragamoneda ha parado!");
-    }
-    
-    public void detener() {
-        if (timer != null) {
-            timer.stop();
+            BJugar.setEnabled(true);
+            if (B1.getIcon().toString().equals(B2.getIcon().toString()) && B1.getIcon().toString().equals(B3.getIcon().toString())) {
+                JOptionPane.showMessageDialog(null, "Felicitaciones, has ganado!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Vuelve a intentarlo");
+            }
         }
-        JOptionPane.showMessageDialog(this, "¡El tragamoneda ha parado!");
     }
 }

@@ -83,8 +83,9 @@ public class FrmJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String nombre = jTextField1.getText();
         this.setVisible(false);
-        TragaMoneda frm = new TragaMoneda();
+        TragaMoneda frm = new TragaMoneda(nombre);
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

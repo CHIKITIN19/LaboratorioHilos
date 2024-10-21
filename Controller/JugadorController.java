@@ -23,7 +23,7 @@ public class JugadorController extends Thread {
 //    private Jugador jugadorActual;
     private TragaMoneda tragamoneda;  
     private boolean ejecucion = true;
-    private int tiempo = 1000; 
+    private int tiempo = 100; 
 
     
 //    public JugadorController(JugadorList list, IView<JugadorList> view, TragaMoneda tragamoneda) {
@@ -47,39 +47,29 @@ public class JugadorController extends Thread {
     
         public void detener() {
             ejecucion = false;
-            tragamoneda.detener();  // Detener también el juego del tragamoneda
+            Thread.currentThread().interrupt();
         }
 
     
     @Override
     public void run() {
         // Array con los nombres de las imágenes
-        String[] nombresImagenes = {"Fresa.png", "Piña.png", "Sandia.png", "Uva.png"};
-        
-        
+        String[] nombresImagenes = {"Fresa.png", "Piña.png", "Sandia.png", "Uva.png"};        
         while (ejecucion) {
-            
             int numero1 = (int) (Math.random() * 4); 
             int numero2 = (int) (Math.random() * 4); 
-            int numero3 = (int) (Math.random() * 4); 
-
-            
+            int numero3 = (int) (Math.random() * 4);             
             String ruta1 = "src/IMG/" + nombresImagenes[numero1];
             String ruta2 = "src/IMG/" + nombresImagenes[numero2];
-            String ruta3 = "src/IMG/" + nombresImagenes[numero3];
-
-            
+            String ruta3 = "src/IMG/" + nombresImagenes[numero3];            
             ImageIcon imagenIcon1 = new ImageIcon(ruta1);
             ImageIcon imagenIcon2 = new ImageIcon(ruta2);
-            ImageIcon imagenIcon3 = new ImageIcon(ruta3);
-
-            
+            ImageIcon imagenIcon3 = new ImageIcon(ruta3);            
             View.TragaMoneda.B1.setIcon(imagenIcon1);
             View.TragaMoneda.B2.setIcon(imagenIcon2);
             View.TragaMoneda.B3.setIcon(imagenIcon3);
-
             try {
-                Thread.sleep(this.tiempo);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 System.out.println("Error en el hilo: " + ex.getMessage());
             }
