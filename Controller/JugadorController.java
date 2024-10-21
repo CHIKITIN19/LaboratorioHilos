@@ -10,6 +10,7 @@ import View.IView;
 import View.TragaMoneda;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,30 +18,31 @@ import java.util.logging.Logger;
  */
 public class JugadorController extends Thread {
 
-    private JugadorList list;  
-    private IView<JugadorList> view;  
+//    private JugadorList list;  
+//    private IView<JugadorList> view;  
+//    private Jugador jugadorActual;
     private TragaMoneda tragamoneda;  
-    private boolean ejecucion = true;  // Para controlar el ciclo de juego
-    private Jugador jugadorActual;  
+    private boolean ejecucion = true;
+    private int tiempo = 1000; 
 
     
-    public JugadorController(JugadorList list, IView<JugadorList> view, TragaMoneda tragamoneda) {
-        this.list = list;
-        this.view = view;
-        this.tragamoneda = tragamoneda;
-    }
+//    public JugadorController(JugadorList list, IView<JugadorList> view, TragaMoneda tragamoneda) {
+//        this.list = list;
+//        this.view = view;
+//        this.tragamoneda = tragamoneda;
+//    }
 
    
-    public void insertJugador(String nombre) {
-        Jugador jugador = new Jugador(nombre);
-        boolean jug = list.add(jugador);
-        if (jug) {
-            jugadorActual = jugador;  
-            view.showMessage("Jugador " + nombre + " añadido.");
-        } else {
-            view.showErrorMessage("Error: no se pudo añadir al jugador.");
-        }
-    }
+//    public void insertJugador(String nombre) {
+//        Jugador jugador = new Jugador(nombre);
+//        boolean jug = list.add(jugador);
+//        if (jug) {
+//            jugadorActual = jugador;  
+//            view.showMessage("Jugador " + nombre + " añadido.");
+//        } else {
+//            view.showErrorMessage("Error: no se pudo añadir al jugador.");
+//        }
+//    }
 
     
         public void detener() {
@@ -51,32 +53,36 @@ public class JugadorController extends Thread {
     
     @Override
     public void run() {
-        if (jugadorActual == null) {
-            view.showErrorMessage("No hay un jugador actual,  Agrega un jugador antes de jugar.");
-            return;
-        }
-        view.showMessage("¡El jugador " + jugadorActual.getName() + " está jugando!");
+        // Array con los nombres de las imágenes
+        String[] nombresImagenes = {"Fresa.png", "Piña.png", "Sandia.png", "Uva.png"};
+        
         
         while (ejecucion) {
-            int[] resultado = new int[3];
+            
+            int numero1 = (int) (Math.random() * 4); 
+            int numero2 = (int) (Math.random() * 4); 
+            int numero3 = (int) (Math.random() * 4); 
 
             
-            for (int i = 0; i < 3; i++) {
-                resultado[i] = (int) (Math.random() * 10);
-            }
-
-            // Mostrar los resultados en la vista del tragamoneda que serian boton1, 2 y 3
-            tragamoneda.display(resultado[0], resultado[1], resultado[2]);
+            String ruta1 = "src/IMG/" + nombresImagenes[numero1];
+            String ruta2 = "src/IMG/" + nombresImagenes[numero2];
+            String ruta3 = "src/IMG/" + nombresImagenes[numero3];
 
             
+            ImageIcon imagenIcon1 = new ImageIcon(ruta1);
+            ImageIcon imagenIcon2 = new ImageIcon(ruta2);
+            ImageIcon imagenIcon3 = new ImageIcon(ruta3);
+
+            
+            View.TragaMoneda.B1.setIcon(imagenIcon1);
+            View.TragaMoneda.B2.setIcon(imagenIcon2);
+            View.TragaMoneda.B3.setIcon(imagenIcon3);
+
             try {
-                Thread.sleep(100);  
+                Thread.sleep(this.tiempo);
             } catch (InterruptedException ex) {
-                view.showErrorMessage("Hubo un error al ejecutar el juego.");
+                System.out.println("Error en el hilo: " + ex.getMessage());
             }
         }
-
-        
-        tragamoneda.displayMessage("¡El tragamoneda ha parado!");
     }
 }
